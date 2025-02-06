@@ -38,8 +38,8 @@ const questions = [
 ];
 
 const questionElement = document.getElementById("question");
-const answerButton = document.getElementById("answer-button"); // Corrected ID  
-const nextButton = document.getElementById("next-btn"); // Corrected ID  
+const answerButton = document.getElementById("answer-button");
+const nextButton = document.getElementById("next-btn");
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -47,21 +47,21 @@ let score = 0;
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
-    nextButton.innerHTML = "Next";
+    nextButton.style.display = "none";  
     showQuestion();
 }
 
 function showQuestion() {
-    let currentQuestion = questions[currentQuestionIndex]; // Corrected from 'question' to 'questions'  
+    let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
 
-    answerButton.innerHTML = ""; // Clear previous answers  
-    currentQuestion.answer.forEach(answer => { // Corrected from 'answer.array' to 'answer'  
+    answerButton.innerHTML = "";
+    currentQuestion.answer.forEach(answer => {
         const button = document.createElement("button");
         button.innerHTML = answer.text;
         button.classList.add("btn");
-        button.onclick = () => selectAnswer(answer); // Added click event  
+        button.onclick = () => selectAnswer(answer);
         answerButton.appendChild(button);
     });
 }
@@ -70,15 +70,21 @@ function selectAnswer(answer) {
     if (answer.correct) {
         score++;
     }
+     
+    nextButton.style.display = "block";
+}
+
+ 
+nextButton.addEventListener("click", () => {
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
         showQuestion();
+        nextButton.style.display = "none";  
     } else {
-
         questionElement.innerHTML = `Quiz finished! Your score: ${score}/${questions.length}`;
         answerButton.innerHTML = "";
         nextButton.style.display = "none";
     }
-}
-s
+});
+
 startQuiz();
