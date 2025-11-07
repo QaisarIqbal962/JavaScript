@@ -19,6 +19,7 @@ nav {
   top: 0%;
   width: 100%;
 }
+
 ul {
   display: flex;
 }
@@ -75,6 +76,13 @@ ul li a.active {
   color: white;
   font-size: 20px;
   border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.main button:hover{
+  color: black;
+  text-decoration:underline;
+
 }
 .foods {
   display: flex;
