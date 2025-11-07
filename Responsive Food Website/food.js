@@ -27,9 +27,7 @@ cards.forEach(function (card) {
   });
 });
 
-//  loading effect
 
-// Smooth scroll for nav links with header offset handled via CSS scroll-margin-top
 const navLinks = document.querySelectorAll('nav ul li a[href^="#"]');
 navLinks.forEach(function (link) {
   link.addEventListener("click", function (e) {
@@ -42,7 +40,7 @@ navLinks.forEach(function (link) {
   });
 });
 
-// Active link highlighting using IntersectionObserver
+
 const sections = ["#home", "#food", "#gallery", "#blog"]
   .map(function (sel) {
     return document.querySelector(sel);
@@ -78,7 +76,6 @@ sections.forEach(function (sec) {
   observer.observe(sec);
 });
 
-// Mobile menu toggle (right-side vertical panel)
 const menuButton = document.getElementById("bar");
 const nav = document.querySelector("nav");
 const navList = document.querySelector("nav ul");
@@ -91,7 +88,6 @@ if (menuButton && nav && navList) {
     this.setAttribute("aria-expanded", opening ? "true" : "false");
   });
 
-  // Close menu when a nav link is clicked (useful on mobile)
   navList.addEventListener("click", function (e) {
     const target = e.target;
     if (target && target.matches("a[href^='#']")) {
